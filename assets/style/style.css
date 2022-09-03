@@ -1,0 +1,30 @@
+.title {
+    text-align: center;
+    font-size: 1em;
+}
+
+.user-form,
+.result {
+    display:flex;
+    justify-content: center;
+    margin: 1%;
+}
+
+.btn-go
+ {
+    background-color: rgb(137, 203, 121);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.btn-clear {
+    background-color: rgb(241, 187, 121);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.comment-container {
+    display:flex;
+    justify-content: center;
+    margin: 2%;
+}

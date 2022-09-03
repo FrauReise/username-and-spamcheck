@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Welcome & Comments</title>
+	<link rel="stylesheet" href="assets/style/normalize.css">
+	<link rel="stylesheet" href="assets/style/style.css">
+
+</head>
+
+<body>
+
+	<main>
+		<h1 class="title">Приветствую!Пожалуйста,введите ваши данные</h1>
+
+		<div class="user-form">
+			<div class="input">
+				<input type="text" id="fio" class="input-form" placeholder="Введите ваши ФИО через пробел">
+			</div>
+
+			<div class="btn">
+				<button type="button" class="btn-go" onclick="userFio()">Ввести</button>
+				<button type="button" class="btn-clear" onclick="clearField()">Очистить</button>
+			</div>
+		</div>
+
+		<div class="result">
+			<input type="text" class="lastname-form" id="lastName" placeholder="Фамилия" disabled>
+			<input type="text" class="name-form" id="name" placeholder="Имя" disabled>
+			<input type="text" class="midname-form" id="middleName" placeholder="Отчество" disabled>
+
+
+		</div>
+
+		<div class="comment-container">
+			<div class="input-field" id="commentField"></div>
+			<div class="comment-wrapper">
+				<div class="user-comment">
+					<textarea rows="3" cols="20" id="comment" placeholder="Добавьте Ваш комментарий"></textarea>
+				</div>
+				<div>
+					<button class="btn-go" type="button" id="addComment">Добавить</button>
+					<button class="btn-clear" type="button" id="clearComment">Очистить</button>
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+
+
+
+
+
+	<script src="assets/script/script.js"></script>
+</body>
+
+</html>
