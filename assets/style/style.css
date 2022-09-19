@@ -10,6 +10,11 @@
     margin: 1%;
 }
 
+.input-form {
+    width: 300px;
+}
+
+
 .btn-go
  {
     background-color: rgb(137, 203, 121);
