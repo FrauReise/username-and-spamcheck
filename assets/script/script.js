@@ -67,3 +67,59 @@ document.getElementById('addComment').onclick = function() {
 document.getElementById('clearComment').onclick = function() {
     let comment = document.getElementById('comment').value = " ";
 }
+
+const addBtn = document.getElementById("addComment");
+const commentField = document.getElementById("comment");
+let arrayComment = []; //Массив комментариев
+
+//Вставка аватарки, слушание изменение в поле <input type="file" class="form-control-file" id="file" value="">
+document.getElementById("file").addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
+        localStorage.setItem('wallpaper', base64String);
+        document.getElementById("img_avatar").src = "data:image/png;base64," + base64String;
+    };
+    reader.readAsDataURL(file);
+});
+
+//Создание комментария (аватарка и комментарий)
+function createComment(wallpaper, comment) {
+    let div = document.createElement('div');
+    div.innerHTML = `<div class="alert alert-dark alert-dismissible fade show" role="alert"  id="comment">
+                    <img><img class="card-img-top imgStyle1" id="img_avatar" src=${wallpaper} alt="Avatar">
+                     </label> ${comment}</div>`;
+    document.body.before(div);
+}
+
+//Проверка документа на наличие в нем информации в localStorage
+document.addEventListener("DOMContentLoaded", function (event) {
+
+    let avatar = localStorage.getItem('wallpaper');
+    if (avatar != null) {
+        let avatarImg = document.getElementById("img_avatar");
+        avatarImg.src = "data:image/png;base64," + avatar;
+    }
+
+    if (localStorage.getItem('comment') != null) {
+        arrayComment = JSON.parse(localStorage.getItem('comment'));
+        for(let i = 0; i < arrayComment.length; i++){
+            createComment(document.getElementById("img_avatar").src, arrayComment[i]);
+        }
+    }
+});
+
+//Функция срабатывает при нажатии на кнопку очистить, чистит страницу и localStorage от всего
+btn_clear_comment.addEventListener("click", () => {
+    const commentContainer = document.querySelectorAll(".alert");
+    for (let i = commentContainer.length; i--;) {
+        commentContainer[i].remove();
+    }
+    commentField.value = "";
+    localStorage.clear();
+    document.getElementById("img_avatar").src = "https://i.liveberries.com/01a/3d8/052/a4658162/4132161_portrait_th_70779c811857052cb03b5116473225dd.jpg";
+    document.getElementById("file").value = "";
+    arrayComment = [];
+});
+
